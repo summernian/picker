@@ -1,0 +1,105 @@
+@charset "utf-8";
+
+/** 清除内外边距 **/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
+dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
+pre, /* text formatting elements 文本格式元素 */
+form, fieldset, legend, button, input, textarea, /* form elements 表单元素 */
+th, td /* table elements 表格元素 */ {
+    margin: 0;
+    padding: 0;
+}
+
+/** 常规样式设置 **/
+a { background-color:transparent}
+main { display: block;}
+img { vertical-align: top;}
+textarea{ resize: none;overflow: auto;}
+
+/** 设置默认字体 **/
+body,
+button, input, select, textarea /* for ie */ {
+    /*font: 12px/1.5 'tahoma, arial, \5b8b\4f53, sans-serif';*/
+   font: 12px/1.5 "微软雅黑";
+}
+h1, h2, h3, h4, h5, h6 { font-size: 100%; }
+address, cite, dfn, em, var { font-style: normal; } /* 将斜体扶正 */
+code, kbd, pre, samp { font-family: courier new, courier, monospace; } /* 统一等宽字体 */
+small { font-size: 12px; } /* 小于 12px 的中文很难阅读，让 small 正常化 */
+
+/** 重置列表元素 **/
+ul, ol { list-style: none; }
+
+/** 重置文本格式元素 **/
+a { text-decoration: none; }
+a:hover { text-decoration: none; }
+
+
+/** 重置表单元素 **/
+legend { color: #000; } /* for ie6 */
+fieldset, img { border: 0; } /* img 搭车：让链接里的 img 无边框 */
+button, input, select, textarea { vertical-align: middle;font-size: 100%; } /* 使得表单元素在 ie 下能继承字体大小 */
+button, input {
+    border:none;
+    outline:none;
+    /*清除移动端默认的表单样式*/
+    -webkit-appearance:none;
+}
+
+/** 重置表格元素 **/
+table { border-collapse: collapse; border-spacing: 0; }
+
+/* 清除浮动 */
+.clearFix:after {
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+}
+.clearFix {
+    *zoom: 1;
+}
+
+/** 移动端样式重置 **/
+
+body {
+    /*禁止页面文字选择,屏幕翻转时文字自动调整大小*/
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: none;
+    /*透明度设置为0，去掉点击链接和文本框对象时默认的灰色半透明覆盖层(iOS)或者虚框(Android)*/
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+/*禁用长按页面时的弹出菜单(iOS下有效)*/
+img,a { -webkit-touch-callout:none; }
+
+/*提示框*/
+.toast {
+    position: fixed;
+    z-index: 101;
+    background: rgba(0,0,0,.5);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    text-align: center;
+    display: none;
+}
+.toast-block {
+	max-width: 80%;
+	display: inline-block;
+    line-height: 40px;
+    position: relative;
+    top: 40%;
+    margin: 0 auto;
+    padding: 0 40px;
+    text-align: center;
+    opacity: 0;
+    background: #000;
+    background: rgba(0,0,0,.8);
+    border-radius: 10px;
+}
+.toast span {
+    display: inline-block;
+    font-size: 16px;
+    color: #fff;
+}
